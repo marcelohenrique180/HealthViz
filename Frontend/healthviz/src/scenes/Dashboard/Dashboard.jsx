@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import Menu from '../../components/Menu/Menu';
+import Initial from '../Initial/Initial';
 import './Dashboard.scss';
 
 export default class Dashboard extends React.Component {
@@ -11,7 +12,7 @@ export default class Dashboard extends React.Component {
         <Navbar />
         <div className='dashboard-content'>
           <Switch>
-            <Route path='/inicial' exact />
+            <Route path='/inicial' exact component={Initial} />
             <Route path='/paciente' exact />
             <Route path='/pacientes' exact />
             <Redirect to='/inicial' />
