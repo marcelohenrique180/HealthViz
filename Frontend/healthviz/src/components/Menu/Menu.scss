@@ -1,0 +1,38 @@
+@import './src/assets/styles/variables';
+
+.menu {
+    @include display-flex(row, center, space-around);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+    .menu-item {
+        @include display-flex(column, center, center);
+
+        &__icon {
+            width: 30px;
+            height: 30px;
+        }
+
+        &__description {
+            font-size: $small-size-font;
+            font-weight: $bold-font;
+        }
+
+        &.selected {
+            .menu-item__icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .menu-item__description {
+                color: $color-primary;
+                font-size: $default-size-font;
+            }
+        }
+    }
+
+}

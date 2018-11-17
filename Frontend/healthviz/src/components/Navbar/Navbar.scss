@@ -1,0 +1,26 @@
+@import './src/assets/styles/variables';
+
+.navbar {
+    @include display-flex(row, center, space-between);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background-color: $color-primary;
+
+    .link {
+        text-decoration: none;
+    }
+
+    &__title {
+        color: $contrast-color-font;
+        font-size: $medium-size-font;
+        font-weight: $bold-font;
+        margin: 0 30px;
+    }
+
+    &__menu-options {
+        margin: 0 10px;
+    }
+}
