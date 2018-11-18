@@ -8,7 +8,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
-
 import Snackbar from '@material-ui/core/Snackbar';
 import Toast from '../../components/generics/Toast/Toast';
 import Button from '../../components/generics/Button/Button';
@@ -125,6 +124,80 @@ class SearchPatient extends React.Component {
     return <Slide direction='up' {...props} />;
   }
 
+  renderErrorSnackbar() {
+    return (
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={this.state.openErrorSnackbar}
+        autoHideDuration={6000}
+        onClose={this.handleCloseToast}>
+        <Toast
+          onClose={this.handleCloseToast}
+          variant='error'
+          message={this.state.errorMessage}
+        />
+      </Snackbar>
+    );
+  }
+
+  renderSearchDialog(classes) {
+    return (
+      <Dialog
+        fullScreen
+        open={this.state.openSearchModal}
+        onClose={this.handleCloseSearchDialog}
+        TransitionComponent={this.transition}>
+        <AppBar className={classes.appBar} color='inherit'>
+          <Toolbar className={classes.toolBar}>
+            <h4 className={classes.title}>Pesquisar paciente</h4>
+            <IconButton
+              color='inherit'
+              onClick={this.handleCloseSearchDialog}
+              aria-label='Fechar'>
+              <CloseIcon />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+        <form className={classes.form} method='post'>
+          <Input
+            name='name'
+            type='text'
+            required={true}
+            value={this.state.name}
+            onChange={this.handleChange}
+            text='Nome'
+          />
+          <Input
+            name='ward'
+            type='text'
+            required={true}
+            value={this.state.ward}
+            onChange={this.handleChange}
+            text='Ala'
+          />
+          <Input
+            name='bed'
+            type='text'
+            required={true}
+            value={this.state.bed}
+            onChange={this.handleChange}
+            text='Leito'
+          />
+          <Button
+            primary={true}
+            type='submit'
+            size='big'
+            text='Pesquisar'
+            onClick={this.handleSubmit}
+          />
+        </form>
+      </Dialog>
+    );
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -154,74 +227,8 @@ class SearchPatient extends React.Component {
             onClick={this.handleClickOpenSearchDialog}
           />
         </div>
-        <div className='alert-toast'>
-          <Snackbar
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            open={this.state.openErrorSnackbar}
-            autoHideDuration={6000}
-            onClose={this.handleCloseToast}>
-            <Toast
-              onClose={this.handleCloseToast}
-              variant='error'
-              message={this.state.errorMessage}
-            />
-          </Snackbar>
-        </div>
-        <div className='dialog-search'>
-          <Dialog
-            fullScreen
-            open={this.state.openSearchModal}
-            onClose={this.handleCloseSearchDialog}
-            TransitionComponent={this.transition}>
-            <AppBar className={classes.appBar} color='inherit'>
-              <Toolbar className={classes.toolBar}>
-                <h4 className={classes.title}>Pesquisar paciente</h4>
-                <IconButton
-                  color='inherit'
-                  onClick={this.handleCloseSearchDialog}
-                  aria-label='Fechar'>
-                  <CloseIcon />
-                </IconButton>
-              </Toolbar>
-            </AppBar>
-            <form className={classes.form} method='post'>
-              <Input
-                name='name'
-                type='text'
-                required={true}
-                value={this.state.name}
-                onChange={this.handleChange}
-                text='Nome'
-              />
-              <Input
-                name='ward'
-                type='text'
-                required={true}
-                value={this.state.ward}
-                onChange={this.handleChange}
-                text='Ala'
-              />
-              <Input
-                name='bed'
-                type='text'
-                required={true}
-                value={this.state.bed}
-                onChange={this.handleChange}
-                text='Leito'
-              />
-              <Button
-                primary={true}
-                type='submit'
-                size='big'
-                text='Pesquisar'
-                onClick={this.handleSubmit}
-              />
-            </form>
-          </Dialog>
-        </div>
+        <div className='alert-toast'>{this.renderErrorSnackbar()}</div>
+        <div className='dialog-search'>{this.renderSearchDialog(classes)}</div>
       </div>
     );
   }
