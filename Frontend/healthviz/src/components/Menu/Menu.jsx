@@ -38,7 +38,7 @@ export default class Menu extends React.Component {
             <span className='menu-item__description'>Inicial</span>
           </div>
         </Link>
-        <Link to='/paciente' onClick={() => this.selectItem(2)}>
+        <Link to='/pesquisar-paciente' onClick={() => this.selectItem(2)}>
           <div
             className={`menu-item ${
               this.state.selectedItem === 2 ? 'selected' : 'unselected'

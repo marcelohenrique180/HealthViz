@@ -3,10 +3,6 @@ import UserAvatar from '../../components/generics/UserAvatar/UserAvatar';
 import './Initial.scss';
 
 export default class Initial extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className='initial'>

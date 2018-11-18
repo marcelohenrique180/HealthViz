@@ -1,0 +1,30 @@
+@import './src/assets/styles/variables';
+
+.search-patient {
+    @include display-flex(column, center, center);
+    margin: 0 10%;
+
+    .title {
+        width: 100%;
+        color: $color-secondary;
+        font-size: $big-size-font;
+        margin: 0 0 20px 0;
+    }
+
+    .qr-reader {
+        width: 100%;
+
+        section {
+            background-color: #000000;
+
+            div {
+                box-shadow: #0dccd6a8 0px 0px 0px 5px inset !important;
+            }
+        }
+    }
+
+    .search-patient__name-or-ward {
+        width: 100%;
+        margin-top: 30px;
+    }
+}

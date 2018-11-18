@@ -50,7 +50,7 @@ class UserAvatar extends React.Component {
 UserAvatar.propTypes = {
   classes: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
-  type: PropTypes.oneOf('small', 'big', 'huge'),
+  type: PropTypes.oneOf(['small', 'big', 'huge']),
 };
 
 export default withStyles(styles)(UserAvatar);

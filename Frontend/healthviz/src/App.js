@@ -12,7 +12,8 @@ class App extends Component {
         <Switch>
           <Route path='/' exact component={Login}/>
           <Route path='/inicial' exact component={Dashboard} />
-          <Route path='/paciente' exact component={Dashboard} />
+          <Route path='/pesquisar-paciente' exact component={Dashboard} />
+          <Route path='/paciente/:id' exact component={Dashboard} />
           <Route path='/pacientes' exact component={Dashboard} />
           <Redirect to='/' />
         </Switch>

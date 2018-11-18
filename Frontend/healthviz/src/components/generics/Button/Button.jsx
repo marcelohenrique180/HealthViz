@@ -10,7 +10,8 @@ export default class Button extends React.Component {
           className={`button-content ${
             this.props.primary ? 'primary' : 'secondary'
           } ${this.props.size}`}
-          type={this.props.type}>
+          type={this.props.type}
+          onClick={this.props.onClick}>
           {this.props.text}
         </button>
       </div>
@@ -21,6 +22,7 @@ export default class Button extends React.Component {
 Button.propTypes = {
   primary: PropTypes.bool.isRequired,
   type: PropTypes.oneOf(['button', 'reset', 'submit']).isRequired,
-  size: PropTypes.oneOf(['big', 'medium', 'small']).isRequired,
+  size: PropTypes.oneOf(['huge', 'big', 'medium', 'small']).isRequired,
   text: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
 };
