@@ -12,6 +12,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Toast from '../../components/generics/Toast/Toast';
 import Button from '../../components/generics/Button/Button';
 import Input from '../../components/generics/Input/Input';
+import SelectInput from '../../components/generics/SelectInput/SelectInput';
 import './SearchPatient.scss';
 
 const styles = {
@@ -41,7 +42,7 @@ class SearchPatient extends React.Component {
       id: null,
       errorMessage: '',
       openErrorSnackbar: false,
-      openSearchModal: false,
+      openSearchDialog: false,
       name: '',
       ward: '',
       bed: '',
@@ -75,7 +76,7 @@ class SearchPatient extends React.Component {
 
   handleError() {
     this.setState({
-      errorMessage: 'Algo deu errado, busque por nome.',
+      errorMessage: 'Erro no leitor de códigos.',
       openErrorSnackbar: true,
     });
   }
@@ -88,19 +89,22 @@ class SearchPatient extends React.Component {
   }
 
   handleClickOpenSearchDialog() {
-    this.setState({ openSearchModal: true });
+    this.setState({ openSearchDialog: true });
   }
 
   handleCloseSearchDialog() {
     this.setState({
-      openSearchModal: false,
+      openSearchDialog: false,
     });
   }
 
   handleChange(event) {
     const target = event.target;
-    const value = target.value;
     const name = target.name;
+    let value = target.value;
+    if (value === 'null') {
+      value = '';
+    }
     this.setState({
       [name]: value,
     });
@@ -124,7 +128,7 @@ class SearchPatient extends React.Component {
     return <Slide direction='up' {...props} />;
   }
 
-  renderErrorSnackbar() {
+  openErrorSnackbar() {
     return (
       <Snackbar
         anchorOrigin={{
@@ -143,11 +147,11 @@ class SearchPatient extends React.Component {
     );
   }
 
-  renderSearchDialog(classes) {
+  openSearchDialog(classes) {
     return (
       <Dialog
         fullScreen
-        open={this.state.openSearchModal}
+        open={this.state.openSearchDialog}
         onClose={this.handleCloseSearchDialog}
         TransitionComponent={this.transition}>
         <AppBar className={classes.appBar} color='inherit'>
@@ -170,13 +174,27 @@ class SearchPatient extends React.Component {
             onChange={this.handleChange}
             text='Nome'
           />
-          <Input
+          <SelectInput
             name='ward'
-            type='text'
+            text='Ala hospitalar'
             required={true}
-            value={this.state.ward}
+            multiple={false}
             onChange={this.handleChange}
-            text='Ala'
+            defaultValueText='Todas'
+            options={[
+              {
+                id: 1,
+                name: 'UTI',
+              },
+              {
+                id: 2,
+                name: 'Oncologia',
+              },
+              {
+                id: 3,
+                name: 'Pediatria',
+              },
+            ]}
           />
           <Input
             name='bed'
@@ -227,8 +245,8 @@ class SearchPatient extends React.Component {
             onClick={this.handleClickOpenSearchDialog}
           />
         </div>
-        <div className='alert-toast'>{this.renderErrorSnackbar()}</div>
-        <div className='dialog-search'>{this.renderSearchDialog(classes)}</div>
+        <div className='alert-toast'>{this.openErrorSnackbar()}</div>
+        <div className='dialog-search'>{this.openSearchDialog(classes)}</div>
       </div>
     );
   }

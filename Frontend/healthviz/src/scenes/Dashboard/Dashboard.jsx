@@ -5,6 +5,7 @@ import Menu from '../../components/Menu/Menu';
 import Initial from '../Initial/Initial';
 import SearchPatient from '../SearchPatient/SearchPatient';
 import Patient from '../Patient/Patient';
+import Patients from '../Patients/Patients';
 import './Dashboard.scss';
 
 export default class Dashboard extends React.Component {
@@ -17,7 +18,7 @@ export default class Dashboard extends React.Component {
             <Route path='/inicial' exact component={Initial} />
             <Route path='/pesquisar-paciente' exact component={SearchPatient} />
             <Route path='/paciente/:id' exact component={Patient} />
-            <Route path='/pacientes' exact />
+            <Route path='/pacientes' exact component={Patients} />
             <Redirect to='/inicial' />
           </Switch>
         </div>

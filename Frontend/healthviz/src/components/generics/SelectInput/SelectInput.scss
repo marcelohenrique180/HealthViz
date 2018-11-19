@@ -1,0 +1,64 @@
+@import './src/assets/styles/variables';
+
+$trans-time: 300ms;
+
+.select-input {
+    @include display-flex(column, center, center);
+    position: relative;
+    margin-bottom: 30px;
+    width: 100%;
+
+    &-content {
+        background: none;
+        color: $color-secondary;
+        font-size: $default-size-font;
+        padding: 10px 0px;
+        width: $big-width;
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid $color-secondary;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:focus~label,
+        &:valid~label {
+            top: -14px;
+            font-size: 12px;
+            color: $color-secondary;
+        }
+
+        &:focus~.bar:before {
+            width: 100%;
+        }
+    }
+
+    label {
+        color: $color-secondary;
+        font-size: 16px;
+        font-weight: normal;
+        position: absolute;
+        pointer-events: none;
+        left: 10%;
+        top: 10px;
+        transition: $trans-time ease all;
+    }
+
+    .bar {
+        position: relative;
+        display: block;
+        width: $big-width;
+
+        &:before {
+            content: '';
+            height: 2px;
+            width: 0;
+            bottom: 0px;
+            position: absolute;
+            background: $color-secondary;
+            transition: $trans-time ease all;
+            left: 0%;
+        }
+    }
+}

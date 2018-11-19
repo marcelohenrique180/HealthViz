@@ -128,7 +128,7 @@ class Patient extends React.Component {
             <div className='graph__name'>Nome do gráfico</div>
           </div>
         </div>
-        {this.state.openGraph ? this.openGraph(classes) : null}
+        {this.openGraph(classes)}
       </div>
     );
   }
