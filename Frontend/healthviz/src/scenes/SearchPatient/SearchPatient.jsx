@@ -60,10 +60,6 @@ class SearchPatient extends React.Component {
 
   handleScan(data) {
     if (data) {
-      this.setState({
-        result: data,
-      });
-
       let id = parseInt(data, 10);
 
       if (id) {
