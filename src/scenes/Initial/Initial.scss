@@ -1,0 +1,38 @@
+@import './src/assets/styles/variables';
+
+.initial {
+    @include display-flex(column, center, center);
+    height: 100%;
+    margin: 0 10%;
+
+    .informations {
+        @include display-flex(column, center, center);
+
+        &__basic {
+            @include display-flex(column, center, center);
+
+            .user-name {
+                font-size: $big-size-font;
+                margin: 20px 0;
+            }
+        }
+
+        &__profession {
+            @include display-flex(column, center, center);
+            margin-top: 20px;
+            font-weight: $bold-font;
+
+            .info {
+                margin-bottom: 10px;
+
+                &__description {
+                    color: $color-secondary;
+                }
+
+                &__content {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+@import './src/assets/styles/variables';
+
+.menu {
+    @include display-flex(row, center, space-around);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    z-index: 1;
+
+    .menu-item {
+        @include display-flex(column, center, center);
+
+        &__icon {
+            width: 25px;
+            height: 25px;
+        }
+
+        &__description {
+            font-size: $small-size-font;
+            font-weight: $bold-font;
+        }
+
+        &.selected {
+            .menu-item__icon {
+                width: 30px;
+                height: 30px;
+            }
+
+            .menu-item__description {
+                color: $color-primary;
+                font-size: $default-size-font;
+            }
+        }
+    }
+
+}

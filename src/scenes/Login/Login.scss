@@ -1,0 +1,18 @@
+@import './src/assets/styles/variables';
+
+.login {
+    @include display-flex(row, center, center);
+
+    background-color: $color-primary;
+    height: $default-page-height;
+
+    &-content {
+        width: $big-width;
+    }
+
+    .form-login {
+        @include display-flex(column, center, center);
+        width: $huge-width;
+        margin: $default-margin;
+    }
+}

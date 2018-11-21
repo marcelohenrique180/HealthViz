@@ -1,0 +1,56 @@
+@import './src/assets/styles/variables';
+
+.patient {
+    @include display-flex(column, center, center);
+    height: 100%;
+    margin: 0 10%;
+
+    &__informations {
+        @include display-flex(column, center, center);
+        font-weight: $bold-font;
+
+        .name {
+            font-size: $big-size-font;
+            margin: 0 0 10px 0;
+        }
+
+        .info {
+            margin-bottom: 5px;
+
+            &__description {
+                color: $color-secondary;
+            }
+
+            &__content {
+                margin-left: 10px;
+            }
+        }
+    }
+
+    &__graphs {
+        @include display-flex(row, center, space-around);
+        margin-top: 30px;
+        flex-wrap: wrap;
+
+        .graph {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 10px;
+
+            &__name {
+                @include display-flex(row, center, center);
+                text-align: center;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                z-index: 1;
+                background-color: rgba(0, 0, 0, 0.25);
+                color: $contrast-color-font;
+                font-weight: $bold-font;
+            }
+        }
+    }
+}

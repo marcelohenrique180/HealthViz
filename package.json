@@ -9,6 +9,7 @@
     "node-sass": "^4.9.4",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-qr-reader": "^2.1.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.5"
   },
@@ -16,7 +17,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "css:build": "node-sass-chokidar --include-path ./node_modules/foundation-sites/scss --include-path ./src/assets/styles --include-path ./node_modules src/ -o assets/styles"
   },
   "eslintConfig": {
     "extends": "react-app"

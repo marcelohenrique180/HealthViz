@@ -1,0 +1,12 @@
+@import './src/assets/styles/variables';
+
+.dashboard {
+    position: relative;
+    width: $default-page-width;
+    height: 100%;
+
+    &-content {
+        margin: 50px 0 110px 0;
+        font-size: $default-size-font;
+    }
+}
